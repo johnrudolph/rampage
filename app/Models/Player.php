@@ -36,8 +36,8 @@ class Player extends Model
         return PlayerDeckState::retrieve($this->uuid);
     }
 
-    public function prepareCard($card, $environment)
+    public function prepareCard($card, $environment, Player $original_owner)
     {
-        $this->deckState()->prepareCard($card, $environment);
+        $this->deckState()->prepareCard($card, $environment, $original_owner);
     }
 }

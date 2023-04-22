@@ -19,6 +19,13 @@ class GameState extends AggregateRoot
 {
     public $players = [];
 
+    const PHASES = [
+        'handbuilding' => 'handbuilding',
+        'skirmish' => 'skirmish',
+    ];
+
+    public $phase;
+
     public $environments = [];
     
     public function game()
@@ -86,6 +93,11 @@ class GameState extends AggregateRoot
         return $this;
     }
 
+    public function applyGameStarted(GameStarted $event)
+    {
+        $this->phase = $this::PHASES['handbuilding'];
+    }
+
     public function refreshEnvironments()
     {
         collect(range(1, 3))->each(function ($i) {
@@ -93,7 +105,7 @@ class GameState extends AggregateRoot
                 $new_environment = EnvironmentCard::all()
                     ->reject(fn ($environment) => 
                         collect($this->environments)
-                            ->where('environment', $environment)
+                            ->where('environment_class', $environment)
                             ->count() > 0
                     )
                     ->random();
@@ -109,7 +121,7 @@ class GameState extends AggregateRoot
     public function applyEnvironmentActivated(EnvironmentActivated $event)
     {
         $this->environments[] = [
-            'environment' => $event->environment_class,
+            'environment_class' => $event->environment_class,
             'status' => 'active',
         ];
     }

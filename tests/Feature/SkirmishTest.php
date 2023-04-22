@@ -8,6 +8,10 @@ beforeEach(function () {
     $this->bootGame();
 });
 
-it('chooses 3 random Environments to be in play when the game starts', function () {
+it('calculates scores at the end of skirmishes', function () {
 
-});
+})->skip();
+
+it('handles ties', function () {
+
+})->skip();

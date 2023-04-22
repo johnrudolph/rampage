@@ -2,6 +2,9 @@
 
 namespace app\Cards;
 
+use App\Models\Player;
+use App\Models\Skirmish;
+
 class ChannelPower extends Card
 {
     const TITLE = 'Channel Power';
@@ -14,7 +17,7 @@ class ChannelPower extends Card
 
     const INITIAL_POWER = 0;
 
-    public function power()
+    public static function power(Player $player, Skirmish $skirmish)
     {
         //
     }

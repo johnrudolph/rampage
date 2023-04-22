@@ -2,6 +2,9 @@
 
 namespace app\Cards;
 
+use App\Models\Player;
+use App\Models\Skirmish;
+
 class Spark extends Card
 {
     const TITLE = 'Spark';
@@ -19,7 +22,7 @@ class Spark extends Card
         //
     }
 
-    public function power()
+    public static function power(Player $player, Skirmish $skirmish)
     {
         return static::INITIAL_POWER;
     }

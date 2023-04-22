@@ -14,9 +14,11 @@ use app\Cards\Droplet;
 use app\Cards\Inferno;
 use app\Cards\Pillage;
 use app\Cards\Rampage;
+use App\Models\Player;
 use app\Cards\Downpour;
 use app\Cards\Manifest;
 use app\Cards\Foresight;
+use App\Models\Skirmish;
 use app\Cards\Solidarity;
 use app\Cards\Extrication;
 use app\Cards\ChannelPower;
@@ -40,7 +42,7 @@ class Card
         //
     }
 
-    public function power()
+    public static function power(Player $player, Skirmish $skirmish)
     {
         return static::INITIAL_POWER;
     }

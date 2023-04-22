@@ -2,6 +2,9 @@
 
 namespace app\Cards;
 
+use App\Models\Player;
+use App\Models\Skirmish;
+
 class Acolyte extends Card
 {
     const TITLE = 'Acolyte';
@@ -14,7 +17,7 @@ class Acolyte extends Card
 
     const INITIAL_POWER = 2;
 
-    public function power()
+    public static function power(Player $player, Skirmish $skirmish)
     {
         return static::INITIAL_POWER;
     }
